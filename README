@@ -1,0 +1,66 @@
+arnonguttel
+205951874
+
+1.  AsciiArtAlgorithm: This class implements the algorithm to generate ASCII art from an image. It takes 
+    an input image, resolution, and a character matcher based on image brightness. It divides the input 
+    image into smaller squares, calculates the brightness of each square, and maps each brightness value 
+    to a corresponding ASCII character using the provided character matcher.
+
+    Shell: This class represents a shell for interacting with the ASCII art generation program. It allows 
+    users to modify parameters such as the character set, resolution, input image, output format, and run 
+    the ASCII art generation algorithm. It uses the AsciiArtAlgorithm class to generate ASCII art based 
+    on user inputs.
+
+    ImageBrightnessCalculator: A utility class for calculating the brightness of an image. It provides a 
+    method to calculate the brightness of an image based on the RGB values of its pixels.
+
+    ImagePadder: A utility class for padding images to the nearest power of two dimensions. It provides a 
+    method to pad an image with white pixels to make its dimensions a power of two.
+
+    ImageSubDivider: A utility class to divide an image into smaller squares. It provides a method to 
+    divide the original image into squares of a specified size.
+
+    SubImgCharMatcher: This class provides functionality to match characters to image brightness levels. 
+    It maps each character to a corresponding brightness value and provides methods to add, remove, and 
+    retrieve characters from the character set based on their brightness. It is used by the 
+    AsciiArtAlgorithm class to map brightness values to ASCII characters.
+
+    The connections between these classes are as follows:
+    The AsciiArtAlgorithm class uses the ImagePadder and ImageSubDivider utility classes to preprocess 
+    the input image before generating ASCII art.
+    The AsciiArtAlgorithm class uses the ImageBrightnessCalculator utility class to calculate the 
+    brightness of image squares.
+    The AsciiArtAlgorithm class uses the SubImgCharMatcher class to map brightness values to ASCII 
+    characters.
+    The Shell class interacts with the user to modify parameters and run the ASCII art generation 
+    algorithm using the AsciiArtAlgorithm class.
+
+2.  charsBrightnessMap: This variable is a TreeMap in the SubImgCharMatcher class. It maps characters to
+    their corresponding brightness values. It's used to efficiently retrieve the brightness value of a 
+    character and vice versa. The TreeMap is sorted based on the natural ordering of characters.
+
+    brightnessMap: Also a TreeMap in the SubImgCharMatcher class. It maps brightness values to sets of 
+    characters having the same brightness. This mapping allows for efficient retrieval of characters with 
+    similar brightness levels. The TreeMap is sorted based on the natural ordering of brightness values.
+
+    normalizedBrightnessMap: Another TreeMap in the SubImgCharMatcher class. It stores a normalized 
+    version of the brightness map, where brightness values are scaled between 0 and 1. This normalization 
+    facilitates efficient lookup of characters based on normalized brightness values.
+
+3.  IllegalArgumentException: This exception is thrown in several places in the code, primarily in the  
+    Shell class. It is used to handle invalid user inputs or states that violate preconditions. For     
+    example:
+    When the user tries to modify the ASCII matcher with an invalid command or parameters.
+    When the user tries to change the resolution to a value that exceeds the boundaries defined by the 
+    input image size.
+    When the user provides invalid parameters for modifying the ASCII matcher, such as an empty string or 
+    an invalid range.
+    In each case, the exception message provides information about the specific problem encountered, 
+    helping the user understand what went wrong and how to correct it.
+
+    IOException: This exception is thrown in the Image class constructor when there is an error reading 
+    the input image file. It is used to handle scenarios where the input image file is not found or 
+    cannot be read due to file system errors. In the changeImage() method of the Shell class, this 
+    exception is caught, and a message is printed to inform the user that the image could not be loaded.
+
+4.  no changes were made to SubImgCharMatcher API
